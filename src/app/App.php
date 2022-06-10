@@ -3,6 +3,7 @@ namespace Bank;
 use Bank\Controllers\AuthorityController;
 use Bank\Controllers\HomeController;
 use Bank\Controllers\LoginController;
+use Bank\Controllers\MessagesController;
 
 class App
 {
@@ -11,6 +12,7 @@ class App
 
     public static function start(){
         session_start();
+        MessagesController::init();
         $uri = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($uri);
         self::route($uri);
@@ -19,18 +21,21 @@ class App
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ('GET' == $method && count($uri) == 1 && $uri[0] === ''){
-            if (AuthorityController::auth()) {
+            if (!AuthorityController::auth()) {
                 return self::redirect();
             }
-           return (new HomeController())->index();
+           return (new HomeController())->msg();
         }
-
+        if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
+            if (!AuthorityController::auth()) {
+                return self::redirect();
+            }
+           return (new HomeController())->work();
+        }
         if ('POST' == $method && count($uri) == 1 && $uri[0] === ''){
+
            return (new LoginController())->login();
         }
-
-
-
 
     }
 
