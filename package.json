@@ -1,0 +1,20 @@
+{
+  "name": "bank_second",
+  "version": "1.0.1",
+  "description": "K BANK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kestutis <kestutis.julius@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "laravel-mix": "^6.0.49"
+  },
+  "devDependencies": {
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0"
+  }
+}

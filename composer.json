@@ -1,0 +1,17 @@
+{
+    "name": "kestutis/bank",
+    "description": "K Bank",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Bank\\": "src/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kęstutis Skrebė",
+            "email": "kestutis.julius@gmail.com"
+        }
+    ],
+    "require": {}
+}
