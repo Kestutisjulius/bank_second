@@ -30,6 +30,9 @@ class App
         if ('POST' == $method && count($uri) == 1 && $uri[0] === 'logout'){
            return (new LoginController())->logout();
         }
+        if ('POST' == $method && count($uri) == 1 && $uri[0] === 'editedView'){
+           return (new WorkController())->edit();
+        }
         if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
            return (new WorkController())->allAccounts();
         }

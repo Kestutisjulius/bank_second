@@ -1,17 +1,5 @@
 <?php
-/** {
- * "id":1,
- * "first_name":"Kerk",
- * "last_name":"Sidey",
- * "email":"ksidey0@reuters.com",
- * "gender":"Male",
- * "ip_address":"215.190.0.76",
- * "credit_card":"PS09 OPUR ER06 FRRY BOGY 7PAJ WCGJ L",
- * "currency":"Euro",
- * "currency_code":"EUR",
- * "money":"€793,73",
- * "avatar":"https://robohash.org/laudantiumdolorvoluptatem.png?size=50x50&set=set1"},
- */
+
 use Bank\App;
 use Bank\Controllers\WorkController;
 use Bank\Controllers\DataController;

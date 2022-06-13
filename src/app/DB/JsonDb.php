@@ -41,16 +41,20 @@ class JsonDb implements DataBase
 
     public function getUserById(int $userId): array
     {
-        $db = $this->data;
-        $user = [];
-        foreach ($db as $item){
+        foreach ($this->data as $item){
             if ((int)$item->id == $userId){
-                foreach ($item as $key=>$value){
-                    $user[$key] = $value;
-                }
+                return (array)$item;
             }
         }
+    }
 
-        return $user;
+    function update(int $userId, array $userData): void
+    {
+        foreach ($this->data as $key =>$value){
+            if ((int)$value->id == $userId){
+                $this->data[$key] = $userData;
+                break;
+            }
+        }
     }
 }
