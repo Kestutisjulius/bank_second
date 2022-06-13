@@ -14,14 +14,15 @@
    text-align: center;
     margin-bottom: 50px;
   }
-}
-form{
-  display: grid;
 
-  grid-template-columns: 20% auto;
-  gap: 5px;
-  label{
-    width: 30%;
+  form{
+    display: grid;
+
+    grid-template-columns: 20% auto;
+    gap: 5px;
+    label{
+      width: 30%;
+    }
   }
 }
 .form-control{

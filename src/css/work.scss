@@ -1,0 +1,13 @@
+h1{
+  text-align: center;
+}
+.work{
+  display: flex;
+  flex-wrap: wrap;
+}
+.action-line{
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+@import "./card";

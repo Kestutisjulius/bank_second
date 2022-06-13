@@ -11,6 +11,37 @@ body {
   background-color: cadetblue;
 }
 
+.authority {
+  padding: 5px;
+  background-color: #5599aa;
+  display: flex;
+  align-content: center;
+}
+.authority span {
+  margin-right: 20px;
+  margin-left: 50%;
+  color: #115511;
+  text-shadow: 2px 3px 3px #226677;
+  transform: translateX(-50%);
+}
+.authority form {
+  display: inline;
+}
+.authority form button {
+  border: none;
+  box-shadow: 0px 0px 3px 1px brown;
+  padding: 3px 13px;
+  border-radius: 6px;
+  background-color: cadetblue;
+}
+
+.show-msg {
+  position: fixed;
+  left: 20px;
+  top: 5px;
+  color: crimson;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -29,13 +60,12 @@ body {
   text-align: center;
   margin-bottom: 50px;
 }
-
-form {
+.login form {
   display: grid;
   grid-template-columns: 20% auto;
   gap: 5px;
 }
-form label {
+.login form label {
   width: 30%;
 }
 
@@ -63,4 +93,64 @@ form label {
 }
 .btn-login button:hover {
   cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+
+.work {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.action-line {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.card {
+  width: 170px;
+  height: 250px;
+  border: 2px solid brown;
+  border-radius: 20px;
+  padding: 15px 15px;
+  margin: 15px;
+}
+.card .money {
+  text-align: center;
+  background-color: crimson;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 0 5px;
+}
+.card .edit {
+  background-color: yellow;
+  color: black;
+  display: inline-block;
+  border-radius: 10px;
+  width: 50px;
+  margin: 10px 10px 0 0px;
+  padding: 5px 5px 10px;
+  box-shadow: 0 0 3px 3px black;
+  text-align: center;
+}
+.card .delete {
+  background-color: crimson;
+  color: black;
+  display: inline-block;
+  border-radius: 10px;
+  width: 68px;
+  margin: 10px 0px 0px 0px;
+  padding: 5px 5px 10px;
+  box-shadow: 0 0 3px 3px black;
+  text-align: center;
+}
+.card img {
+  height: 65px;
+}
+.card span {
+  font-size: 30px;
+  font-weight: bold;
 }

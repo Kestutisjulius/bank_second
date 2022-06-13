@@ -4,6 +4,7 @@ use Bank\Controllers\AuthorityController;
 use Bank\Controllers\HomeController;
 use Bank\Controllers\LoginController;
 use Bank\Controllers\MessagesController;
+use Bank\Controllers\WorkController;
 
 class App
 {
@@ -21,20 +22,19 @@ class App
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ('GET' == $method && count($uri) == 1 && $uri[0] === ''){
-            if (!AuthorityController::auth()) {
-                return self::redirect();
-            }
-           return (new HomeController())->msg();
-        }
-        if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
-            if (!AuthorityController::auth()) {
-                return self::redirect();
-            }
-           return (new HomeController())->work();
+           return (new HomeController())->index();
         }
         if ('POST' == $method && count($uri) == 1 && $uri[0] === ''){
-
            return (new LoginController())->login();
+        }
+        if ('POST' == $method && count($uri) == 1 && $uri[0] === 'logout'){
+           return (new LoginController())->logout();
+        }
+        if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
+           return (new WorkController())->allAccounts();
+        }
+        if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
+           return (new WorkController())->user($uri[1]);
         }
 
     }
@@ -46,7 +46,11 @@ class App
     public static function redirect($url = '') : void{
         header('Location: http://'.self::DOMAIN.'/'.$url);
     }
+    public static function url($url = ''){
+        return 'http://'.self::DOMAIN.'/'.$url;
+    }
     public static function csrf() : string{
         return md5('jdgs75gsjbhag'.$_SERVER['HTTP_USER_AGENT']);
     }
+
 }

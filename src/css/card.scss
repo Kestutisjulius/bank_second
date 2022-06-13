@@ -1,0 +1,45 @@
+.card{
+  width: 170px;
+  height: 250px;
+  border: 2px solid brown;
+  border-radius: 20px;
+  padding: 15px 15px;
+  margin: 15px;
+  .money{
+    text-align: center;
+    background-color: crimson;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0 5px;
+  }
+  .edit{
+    background-color: yellow;
+    color: black;
+    display: inline-block;
+    border-radius: 10px;
+    width: 50px;
+    margin: 10px 10px 0 0px;
+    padding: 5px 5px 10px;
+    box-shadow: 0 0 3px 3px black;
+    text-align: center;
+  }
+  .delete{
+    background-color: crimson;
+    color: black;
+    display: inline-block;
+    border-radius: 10px;
+    width: 68px;
+    margin: 10px 0px 0px 0px;
+    padding: 5px 5px 10px;
+    box-shadow: 0 0 3px 3px black;
+    text-align: center;
+  }
+  img{
+    height: 65px;
+  }
+  span{
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
