@@ -14,13 +14,12 @@ require __DIR__.'./top.php';
         <input name="find">
         <button name="find" type="submit">Find</button>
     </form>
-    <a href="create.php">Create</a>
+    <a href="create" class="create">create</a>
 </div>
 <div class="work">
 <?php
 $db = (array)($accounts ?? ['empty']);
 foreach ($db as $key => $value){
-
     foreach ($value as $r => $user){
 ?>
     <div class="card">
@@ -31,16 +30,12 @@ foreach ($db as $key => $value){
         <h5><?= $user->email?></h5>
         <h4 class="money">money: <?= $user->money?></h4>
         <a href="<?='http://kbankas.lt/user/'.$user->id?>" class="edit">edit</a>
-        <form name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
-            <button name="deleteUser" type="submit">delete</button>
+        <form class="delete" name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
+            <button name="deleteUser" type="submit" >delete</button>
         </form>
     </div>
-
-
-
 <?php
     }
-
 }
 ?></div><?php
 

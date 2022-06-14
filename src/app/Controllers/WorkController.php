@@ -26,4 +26,7 @@ class WorkController
              App::redirect('work');
         }
     }
+    public static function create(){
+        return App::view('create', ['title' => 'create']);
+    }
 }

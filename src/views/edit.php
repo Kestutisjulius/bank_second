@@ -26,6 +26,7 @@ $uri = explode('/', $_SERVER['REQUEST_URI']); //[0] => /user/5)
                 <input name="currency" type="txt" class="form-control" value="<?= $user['currency'] ?? 'no name'?>">
                 <label for="ccc">currency code: </label>
                 <input name="ccc" type="txt" class="form-control" value="<?= $user['currency_code'] ?? 'no name'?>">
+                <div class="fundInEur"><strong>have: <?= $user['money'].' Euro'?></strong></div>
                 <div class="btn-login">
                     <button type="submit"><strong>save</strong></button>
                 </div>

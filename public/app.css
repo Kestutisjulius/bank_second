@@ -154,3 +154,12 @@ h1 {
   font-size: 30px;
   font-weight: bold;
 }
+.card h5 {
+  display: inline-block;
+  width: 100px;
+  color: blue;
+}
+
+.fundInEur {
+  color: crimson;
+}
