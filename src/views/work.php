@@ -31,7 +31,9 @@ foreach ($db as $key => $value){
         <h5><?= $user->email?></h5>
         <h4 class="money">money: <?= $user->money?></h4>
         <a href="<?='http://kbankas.lt/user/'.$user->id?>" class="edit">edit</a>
-        <a href="<?='http://kbankas.lt/user/'.$user->id?>" class="delete">delete</a>
+        <form name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
+            <button name="deleteUser" type="submit">delete</button>
+        </form>
     </div>
 
 

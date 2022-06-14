@@ -11,7 +11,7 @@ $uri = explode('/', $_SERVER['REQUEST_URI']); //[0] => /user/5)
             <img src="<?= $user['avatar'] ?? 'no name'?>">
             <h1 class="h1"><?= $user['first_name'] ?? 'no name'?></h1>
             <form name="edit" method="post" action="<?= App::url('editedView')?>">
-                <input name="id" type="number" value="$user['id']" hidden>
+                <input name="id" type="number" value="<?= $user['id'] ?? 'no id'?>" hidden>
                 <label for="fname">first name: </label>
                 <input name="fname" type="text" class="form-control" value="<?= $user['first_name'] ?? 'no name'?>">
                 <label for="lname">last name: </label>

@@ -57,4 +57,14 @@ class JsonDb implements DataBase
             }
         }
     }
+
+    public function delete(int $userId): void
+    {
+        foreach ($this->data as $key => $item){
+            if ((int)$item->id == $userId){
+                unset($this->data[$key]);
+                break;
+            }
+        }
+    }
 }

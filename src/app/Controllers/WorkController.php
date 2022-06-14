@@ -15,17 +15,15 @@ class WorkController
         if (AuthorityController::auth()){
         return App::view('edit', ['title' => 'Edit', 'user'=> DataController::getUserById($userId)]);
         }
-        return App::redirect();
+         App::redirect();
     }
     public static function edit(){
-        $user['first_name'] = $_POST['fname'];
-        $user['last_name'] = $_POST['lname'];
-        $user['email'] = $_POST['email'];
-        $user['ip_address'] = $_POST['ip'];
-        $user['credit_card'] = $_POST['cc'];
-        $user['currency'] = $_POST['currency'];
-        $user['currency_code'] = $_POST['ccc'];
-
-        return App::view('editedView', ['title' => 'Edited', 'user'=> DataController::saveUser((int)$_POST['id'], $user)]);
+        return App::view('editedView', ['title' => 'Edited']);
+    }
+    public static function deleteUser($userId){
+        if (AuthorityController::auth()) {
+            DataController::deleteUserById($userId);
+             App::redirect('work');
+        }
     }
 }

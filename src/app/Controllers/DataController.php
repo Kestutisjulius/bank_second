@@ -14,6 +14,9 @@ class DataController
         return $user;
     }
     public static function saveUser($id, $user){
-        return self::getDB()->update($id, $user);
+         self::getDB()->update($id, $user);
+    }
+    public static function deleteUserById($userId){
+         self::getDB()->delete($userId);
     }
 }

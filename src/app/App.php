@@ -39,6 +39,9 @@ class App
         if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
            return (new WorkController())->user($uri[1]);
         }
+        if ('POST' == $method && count($uri) == 2 && $uri[0] === 'deleteUser'){
+           return (new WorkController())->deleteUser($uri[1]);
+        }
 
     }
 
