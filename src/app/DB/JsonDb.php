@@ -62,7 +62,10 @@ class JsonDb implements DataBase
     {
         foreach ($this->data as $key => $item){
             if ((int)$item->id == $userId){
+//                echo '<pre>';
+//                print_r($this->data);
                 unset($this->data[$key]);
+                $this->data = array_values($this->data);
                 break;
             }
         }
