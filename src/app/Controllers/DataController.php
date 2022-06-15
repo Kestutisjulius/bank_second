@@ -19,4 +19,7 @@ class DataController
     public static function deleteUserById($userId){
          self::getDB()->delete($userId);
     }
+    public static function createRecord($user){
+        self::getDB()->create($user);
+    }
 }

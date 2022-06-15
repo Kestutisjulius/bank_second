@@ -36,11 +36,14 @@ class App
         if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
            return (new WorkController())->allAccounts();
         }
-        if ('GET' == $method && count($uri) == 1 && $uri[0] === 'create'){
-           return (new WorkController())->create();
-        }
         if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
            return (new WorkController())->user($uri[1]);
+        }
+        if ('GET' == $method && count($uri) == 1 && $uri[0] === 'create'){
+           return (new WorkController())->createOpen();
+        }
+        if ('POST' == $method && count($uri) == 1 && $uri[0] === 'create'){
+           return (new WorkController())->create();
         }
         if ('POST' == $method && count($uri) == 2 && $uri[0] === 'deleteUser'){
            return (new WorkController())->deleteUser($uri[1]);

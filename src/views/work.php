@@ -14,29 +14,38 @@ require __DIR__.'./top.php';
         <input name="find">
         <button name="find" type="submit">Find</button>
     </form>
-    <a href="create" class="create">create</a>
+    <a href="create" class="createInWork">create</a>
 </div>
 <div class="work">
 <?php
 $db = (array)($accounts ?? ['empty']);
-foreach ($db as $key => $value){
-    foreach ($value as $r => $user){
-?>
-    <div class="card">
-        <h3><?=$user->first_name ?></h3>
-        <img src="<?= $user->avatar?>">
-        <span><?= $user->id?></span>
-        <h3> <?= $user->gender?></h3>
-        <h5><?= $user->email?></h5>
-        <h4 class="money">money: <?= $user->money?></h4>
-        <a href="<?='http://kbankas.lt/user/'.$user->id?>" class="edit">edit</a>
-        <form class="delete" name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
-            <button name="deleteUser" type="submit" >delete</button>
-        </form>
-    </div>
+
+foreach ($db as $usersDB){
+    foreach ($usersDB as $user){
+
+        ?>
+
+<div class="card">
+    <h3><?=$user->first_name ?></h3>
+    <img src="<?= $user->avatar?>">
+    <span><?= $user->id?></span>
+    <h3> <?= $user->gender?></h3>
+    <h5><?= $user->email?></h5>
+    <h4 class="money">money: <?= $user->money?></h4>
+    <a href="<?='http://kbankas.lt/user/'.$user->id?>" class="edit">edit</a>
+    <form class="delete" name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
+        <button name="deleteUser" type="submit" >delete</button>
+    </form>
+</div>
+
 <?php
+
     }
 }
+
 ?></div><?php
+
+
+
 
 require __DIR__.'./bottom.php';

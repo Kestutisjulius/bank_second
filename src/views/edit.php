@@ -3,8 +3,10 @@
 use Bank\App;
 use Bank\Controllers\WorkController;
 use Bank\Controllers\DataController;
+use Bank\Controllers\ExchangesController;
 require __DIR__.'./top.php';
 $uri = explode('/', $_SERVER['REQUEST_URI']); //[0] => /user/5)
+ExchangesController::conversation();
 ?>
     <div class="container">
         <div class="login">

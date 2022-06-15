@@ -26,7 +26,22 @@ class WorkController
              App::redirect('work');
         }
     }
-    public static function create(){
+    public static function createOpen(){
         return App::view('create', ['title' => 'create']);
+    }
+    public static function create(){
+        $user['first_name'] = $_POST['fname'];
+        $user['last_name'] = $_POST['lname'];
+        $user['email'] = $_POST['email'];
+        $user['gender'] = $_POST['gender'] ?? 'unknown';
+        $user['ip_address'] = $_POST['ip'];
+        $user['credit_card'] = $_POST['cc'];
+        $user['currency'] = $_POST['currency'];
+        $user['currency_code'] = $_POST['ccc'];
+        $user['money'] =  "/\u20ac".($_POST['money']);
+        $user['avatar'] =  ($_POST['avatar']);
+
+        DataController::createRecord($user);
+        App::redirect('work');
     }
 }

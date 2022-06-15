@@ -102,6 +102,7 @@ h1 {
 .work {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .action-line {
@@ -109,7 +110,17 @@ h1 {
   grid-template-columns: auto auto;
 }
 
+.createInWork {
+  border: 1px solid #000;
+  width: 50px;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+  background-color: #ffaa00;
+}
+
 .card {
+  display: inline-block;
   width: 170px;
   height: 250px;
   border: 2px solid brown;
@@ -155,11 +166,30 @@ h1 {
   font-weight: bold;
 }
 .card h5 {
-  display: inline-block;
-  width: 100px;
+  display: block;
+  width: auto;
   color: blue;
 }
 
 .fundInEur {
   color: crimson;
+}
+
+.create {
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.create h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.create form {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 6px;
+}
+.create form label {
+  width: 100%;
 }

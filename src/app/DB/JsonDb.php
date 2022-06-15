@@ -36,7 +36,7 @@ class JsonDb implements DataBase
     public function create(array $data): void
     {
         $data['id'] = $this->getId();
-        $this->data[] = $data;
+        $this->data[] = (object)$data;
     }
 
     public function getUserById(int $userId): array
