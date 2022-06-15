@@ -7,4 +7,3 @@
 // YOUR APPLICATION CODE HERE, e.g.
  // Your price in USD
 // Handle JSON parse error...
-  <div class="fundInEur"><strong>have: <?= $user['money'].' Euro'?> and <?= $output ?> in <?= $user['currency']?></strong></div>

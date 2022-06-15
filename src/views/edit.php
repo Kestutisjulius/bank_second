@@ -15,7 +15,7 @@ $output = $cache->get();
     $_SESSION['visual'] = 'CACHE';
     if (null === $output){
     $_SESSION['visual'] = 'LIVE';
-    $output = ExchangesController::conversation($money ?? 1,$user['currency_code'] ?? 'USD');
+    $output = ExchangesController::conversation($money ?? 1,'EUR' ?? 'USD', $user['currency_code']);
     $cache->set($output);
     }
 ?>

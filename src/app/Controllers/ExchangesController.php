@@ -9,7 +9,7 @@ class ExchangesController
     //GET https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD
 
 
-    public static function conversation($base_price, $baseCurrency)
+    public static function conversation($base_price, $baseCurrency, $to)
     {
         $apiKey = '73e2d27451d2a1bbb170edbc';
         $req_url = 'https://v6.exchangerate-api.com/v6/'.$apiKey.'/latest/'.$baseCurrency;
@@ -18,7 +18,12 @@ class ExchangesController
             try {
                 $response = json_decode($response_json);
                 if ('success' === $response->result) {
-                    $EUR_price = round(($base_price * $response->conversion_rates->EUR), 2);
+                    if ($to = 'LTL'){
+                        $EUR_price = round(($base_price * 3.14), 2);
+                    } else{
+
+                    $EUR_price = round(($base_price * $response->conversion_rates->$to), 2);
+                    }
                 }
             }
             catch(Exception $e) {
