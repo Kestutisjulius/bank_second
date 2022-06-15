@@ -18,8 +18,7 @@ require __DIR__.'./top.php';
 </div>
 <div class="work">
 <?php
-$db = (array)($accounts ?? ['empty']);
-
+$db = (array)($accounts ?? [['empty']]);
 foreach ($db as $usersDB){
     foreach ($usersDB as $user){
 

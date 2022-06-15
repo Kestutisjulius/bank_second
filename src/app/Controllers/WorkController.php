@@ -38,7 +38,7 @@ class WorkController
         $user['credit_card'] = $_POST['cc'];
         $user['currency'] = $_POST['currency'];
         $user['currency_code'] = $_POST['ccc'];
-        $user['money'] =  "/\u20ac".($_POST['money']);
+        $user['money'] =  "\u{20ac}".($_POST['money']);
         $user['avatar'] =  ($_POST['avatar']);
 
         DataController::createRecord($user);

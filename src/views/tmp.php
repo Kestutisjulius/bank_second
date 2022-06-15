@@ -1,11 +1,10 @@
 <?php
-foreach ($this->data as $key => $item){
-    if ((int)$item->id == $userId){
-        unset($this->data[$key]);
-        $this->data = array_values($this->data); //reasign array keys
-        break;
-    }
-}
-//Array ( [0] => Bank\DB\JsonDbdata [1] => Bank\DB\JsonDbfile )
-
-
+// Fetching JSON
+// Continuing if we got a result
+// Try/catch for json_decode operation
+// Decoding
+// Check for success
+// YOUR APPLICATION CODE HERE, e.g.
+ // Your price in USD
+// Handle JSON parse error...
+  <div class="fundInEur"><strong>have: <?= $user['money'].' Euro'?> and <?= $output ?> in <?= $user['currency']?></strong></div>

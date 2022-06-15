@@ -4,9 +4,20 @@ use Bank\App;
 use Bank\Controllers\WorkController;
 use Bank\Controllers\DataController;
 use Bank\Controllers\ExchangesController;
+use Bank\Services\Cache;
 require __DIR__.'./top.php';
 $uri = explode('/', $_SERVER['REQUEST_URI']); //[0] => /user/5)
-ExchangesController::conversation();
+$moneyTxt = (substr($user['money'],3));
+$money = (int)str_replace(',','',$moneyTxt) / 100;
+//session_start();
+$cache = new Cache();
+$output = $cache->get();
+    $_SESSION['visual'] = 'CACHE';
+    if (null === $output){
+    $_SESSION['visual'] = 'LIVE';
+    $output = ExchangesController::conversation($money ?? 1,$user['currency_code'] ?? 'USD');
+    $cache->set($output);
+    }
 ?>
     <div class="container">
         <div class="login">
@@ -28,7 +39,8 @@ ExchangesController::conversation();
                 <input name="currency" type="txt" class="form-control" value="<?= $user['currency'] ?? 'no name'?>">
                 <label for="ccc">currency code: </label>
                 <input name="ccc" type="txt" class="form-control" value="<?= $user['currency_code'] ?? 'no name'?>">
-                <div class="fundInEur"><strong>have: <?= $user['money'].' Euro'?></strong></div>
+                <div class="fundInEur"><strong>have: <?= $user['money'].' Euro'?> and <?= $output ?> in <?= $user['currency']?></strong></div>
+                <div style="color: blue; margin-left: 200px;"><?= $_SESSION['visual']?></div>
                 <div class="btn-login">
                     <button type="submit"><strong>save</strong></button>
                 </div>
@@ -39,5 +51,6 @@ ExchangesController::conversation();
 
 
 <?php
+    unset ($_SESSION['visual']);
 require __DIR__.'./bottom.php';
 

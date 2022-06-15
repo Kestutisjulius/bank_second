@@ -4,41 +4,27 @@ namespace Bank\Controllers;
 
 class ExchangesController
 {
-    public static function exchange()
+    //Your API Key: 73e2d27451d2a1bbb170edbc
+    //Example Request: https://v6.exchangerate-api.com/v6/73e2d27451d2a1bbb170edbc/latest/USD
+    //GET https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD
+
+
+    public static function conversation($base_price, $baseCurrency)
     {
-        $endpoint = 'live';
-        $access_key = 'RifB0lReVwy849s9N9mehlTIO30O2DZ5';
-        $ch = curl_init('http://apilayer.net/api/'.$endpoint.'?access_key='.$access_key.'');
-      //  curl_setopt($ch, CURLOPT_URL, 'https://api.apilayer.com/exchangerates_data/live?base=USD&symbols=EUR,GBP');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $exchangeRates = json_decode($output, true);
-
-        return $exchangeRates['quotes']['USDGBP'];
+        $apiKey = '73e2d27451d2a1bbb170edbc';
+        $req_url = 'https://v6.exchangerate-api.com/v6/'.$apiKey.'/latest/'.$baseCurrency;
+        $response_json = file_get_contents($req_url);
+        if(false !== $response_json) {
+            try {
+                $response = json_decode($response_json);
+                if ('success' === $response->result) {
+                    $EUR_price = round(($base_price * $response->conversion_rates->EUR), 2);
+                }
+            }
+            catch(Exception $e) {
+                echo $e;
+            }
+        }
+        return $EUR_price;
     }
-    public static function conversation(){
-        // set API Endpoint, Access Key, required parameters
-        $endpoint = 'convert';
-        $access_key = 'RifB0lReVwy849s9N9mehlTIO30O2DZ5';
-
-        $from = 'USD';
-        $to = 'EUR';
-        $amount = 10;
-
-// initialize CURL:
-        $ch = curl_init('http://apilayer.net/api/'.$endpoint.'?access_key='.$access_key.'&from='.$from.'&to='.$to.'&amount='.$amount.'');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// get the (still encoded) JSON data:
-        $json = curl_exec($ch);
-        curl_close($ch);
-
-// Decode JSON response:
-        $conversionResult = json_decode($json, true);
-
-// access the conversion result
-        echo $conversionResult['result'];
-    }
-
 }

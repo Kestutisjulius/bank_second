@@ -5,10 +5,7 @@ use Bank\Controllers\DataController;
 
 require __DIR__.'./top.php';
 $uri = explode('/', $_SERVER['REQUEST_URI']);
-echo '<pre>';
-print_r($_POST);
 $user = DataController::getUserById($_POST['id']);
-
 $user['first_name'] = $_POST['fname'];
 $user['last_name'] = $_POST['lname'];
 $user['email'] = $_POST['email'];
