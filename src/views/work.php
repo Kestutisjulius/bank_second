@@ -35,6 +35,7 @@ foreach ($db as $usersDB){
     <form class="delete" name="deleteUser" method="post" action="<?='http://kbankas.lt/deleteUser/'.$user->id?>">
         <button name="deleteUser" type="submit" >delete</button>
     </form>
+    <a href="<?='http://kbankas.lt/transfer/'.$user->id?>" class="transfer">transfer</a>
 </div>
 
 <?php

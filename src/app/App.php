@@ -39,6 +39,9 @@ class App
         if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
            return (new WorkController())->user($uri[1]);
         }
+        if ('GET' == $method && count($uri) == 2 && $uri[0] === 'transfer'){
+           return (new WorkController())->transfer($uri[1]);
+        }
         if ('GET' == $method && count($uri) == 1 && $uri[0] === 'create'){
            return (new WorkController())->createOpen();
         }

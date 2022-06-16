@@ -19,7 +19,7 @@ class ExchangesController
                 $response = json_decode($response_json);
                 if ('success' === $response->result) {
                     if ($to = 'LTL'){
-                        $EUR_price = round(($base_price * 3.14), 2);
+                        $EUR_price = round(($base_price * 345.28), 2);
                     } else{
 
                     $EUR_price = round(($base_price * $response->conversion_rates->$to), 2);

@@ -194,3 +194,35 @@ h1 {
 .create form label {
   width: 100%;
 }
+
+.h1_transfer {
+  background-color: #aaa;
+}
+
+.transfer_form {
+  padding: 0;
+  align-items: center;
+  width: 70%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.transfer_form label {
+  margin-left: -70px;
+}
+
+.form-cc {
+  width: 80%;
+  margin-left: -7%;
+}
+
+.btn-transfer {
+  width: 120px;
+  padding: 10px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+}
+.btn-transfer button {
+  padding: 5px;
+  border-radius: 5px;
+}

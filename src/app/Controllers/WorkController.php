@@ -17,6 +17,12 @@ class WorkController
         }
          App::redirect();
     }
+    public static function transfer($userId){
+        if (AuthorityController::auth()){
+        return App::view('transfer', ['title' => 'transfer', 'user'=> DataController::getUserById($userId)]);
+        }
+         App::redirect();
+    }
     public static function edit(){
         return App::view('editedView', ['title' => 'Edited']);
     }
