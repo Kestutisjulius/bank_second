@@ -1,18 +1,25 @@
 <?php
 namespace Bank;
 use Bank\Controllers\AuthorityController;
+use Bank\Controllers\DataController;
 use Bank\Controllers\HomeController;
 use Bank\Controllers\LoginController;
 use Bank\Controllers\MessagesController;
 use Bank\Controllers\WorkController;
+use Bank\DB\JsonDb;
 
 class App
 {
     const PATH = __DIR__.'/../';
     const DOMAIN = 'kbankas.lt';
 
+
     public static function start(){
         session_start();
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
+        header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
         MessagesController::init();
         $uri = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($uri);
@@ -36,6 +43,15 @@ class App
         if ('GET' == $method && count($uri) == 1 && $uri[0] === 'work'){
            return (new WorkController())->allAccounts();
         }
+        //API-----------------------------------//
+        if ('GET' == $method && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'work'){
+            return (new WorkController())->allAccountsApi();
+        }
+
+        if ('DELETE' == $method && count($uri) == 3 && $uri[0] === 'api' && $uri[1] === 'deleteUser'){
+            return (new WorkController())->deleteUserApi($uri[2]);
+        }
+        //API-----------------------------------//
         if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
            return (new WorkController())->user($uri[1]);
         }

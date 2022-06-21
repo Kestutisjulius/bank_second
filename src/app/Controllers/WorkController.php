@@ -11,6 +11,13 @@ class WorkController
     public static function allAccounts(){
         return App::view('work', ['title' => 'Work', 'accounts'=> DataController::getDB()]);
     }
+    public static function allAccountsApi(){
+        echo json_encode(DataController::getDB()->showAll());
+    }
+    public static function deleteUserApi($userId){
+            DataController::deleteUserById($userId);
+    }
+
     public static function user($userId){
         if (AuthorityController::auth()){
         return App::view('edit', ['title' => 'Edit', 'user'=> DataController::getUserById($userId)]);
