@@ -11,7 +11,8 @@ class WorkController
     public static function allAccounts(){
         return App::view('work', ['title' => 'Work', 'accounts'=> DataController::getDB()]);
     }
-    public static function allAccountsApi(){
+    public static function allAccountsApi(): void
+    {
         echo json_encode(DataController::getDB()->showAll());
     }
     public static function deleteUserApi($userId){
