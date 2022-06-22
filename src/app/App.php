@@ -10,16 +10,16 @@ use Bank\DB\JsonDb;
 
 class App
 {
+
     const PATH = __DIR__.'/../';
     const DOMAIN = 'kbankas.lt';
 
 
     public static function start(){
-        session_start();
-        header('Content-Type: application/json');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
         header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
+        session_start();
         MessagesController::init();
         $uri = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($uri);
@@ -48,6 +48,10 @@ class App
             return (new WorkController())->allAccountsApi();
         }
 
+        if ('PUT' == $method && count($uri) == 3 && $uri[0] === 'api' && $uri[1] === 'work'){
+            return (new WorkController())->editApi($uri[2]);
+        }
+
         if ('DELETE' == $method && count($uri) == 3 && $uri[0] === 'api' && $uri[1] === 'deleteUser'){
             return (new WorkController())->deleteUserApi($uri[2]);
         }
@@ -67,6 +71,7 @@ class App
         if ('POST' == $method && count($uri) == 2 && $uri[0] === 'deleteUser'){
            return (new WorkController())->deleteUser($uri[1]);
         }
+        header('Content-Type: application/json');
 
     }
 

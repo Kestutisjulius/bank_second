@@ -18,6 +18,9 @@ class JsonDb implements DataBase
     }
     public function __destruct()
     {
+        if(null === $this->data){
+            return;
+        }
         file_put_contents(__DIR__.'/../../data/'.$this->file.'.json', json_encode($this->data));
     }
 

@@ -18,6 +18,11 @@ class WorkController
     public static function deleteUserApi($userId){
             DataController::deleteUserById($userId);
     }
+    public static function editApi($id){
+        $rawData = file_get_contents("php://input");
+        $data = json_decode($rawData, 1);
+        return DataController::getDB()->update($id, $data);
+    }
 
     public static function user($userId){
         if (AuthorityController::auth()){
