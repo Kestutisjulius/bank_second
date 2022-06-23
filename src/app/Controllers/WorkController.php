@@ -21,7 +21,10 @@ class WorkController
     public static function editApi($id){
         $rawData = file_get_contents("php://input");
         $data = json_decode($rawData, 1);
-        return DataController::getDB()->update($id, $data);
+         DataController::getDB()->update($id, $data);
+    }
+    public static function createApi($account){
+        DataController::createRecord($account);
     }
 
     public static function user($userId){
