@@ -11,14 +11,18 @@ use Bank\DB\JsonDb;
 class App
 {
 
+
     const PATH = __DIR__.'/../';
     const DOMAIN = 'kbankas.lt';
 
 
     public static function start(){
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
-        header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
+        if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
+            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
+            header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
+            die;
+        }
         session_start();
         MessagesController::init();
         $uri = explode('/', $_SERVER['REQUEST_URI']);
@@ -26,6 +30,10 @@ class App
         self::route($uri);
     }
     private static function route(array $uri){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
+        header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ('GET' == $method && count($uri) == 1 && $uri[0] === ''){
@@ -53,16 +61,18 @@ class App
         }
 
 
-        if ('POST' == $method && count($uri) == 1 && $uri[0] === 'api' && $uri[1] === 'create'){
-            $rawData = file_get_contents("php://input");
-            $data = json_decode($rawData, 1);
-            return (new WorkController())->createApi($data);
+        if ('POST' == $method && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'create'){
+            return (new WorkController())->createApi();
         }
 
         if ('DELETE' == $method && count($uri) == 3 && $uri[0] === 'api' && $uri[1] === 'deleteUser'){
+
             return (new WorkController())->deleteUserApi($uri[2]);
         }
         //API-----------------------------------//
+
+
+
         if ('GET' == $method && count($uri) == 2 && $uri[0] === 'user'){
            return (new WorkController())->user($uri[1]);
         }

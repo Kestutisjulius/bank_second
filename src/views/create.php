@@ -48,7 +48,7 @@ require __DIR__.'./top.php';
             <div class="btn-login">
                 <button type="submit"><strong>save</strong></button>
             </div>
-            <input type="hidden" name="csrf" value="<?=App::csrf()?>">
+
         </form>
     </div>
 </div>

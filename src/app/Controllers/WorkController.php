@@ -19,12 +19,16 @@ class WorkController
             DataController::deleteUserById($userId);
     }
     public static function editApi($id){
+
         $rawData = file_get_contents("php://input");
         $data = json_decode($rawData, 1);
          DataController::getDB()->update($id, $data);
     }
-    public static function createApi($account){
-        DataController::createRecord($account);
+    public static function createApi(): void
+    {
+        $rawData = file_get_contents("php://input");
+        $data = json_decode($rawData, 1);
+        DataController::createRecord($data);
     }
 
     public static function user($userId){
