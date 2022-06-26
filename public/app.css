@@ -16,6 +16,7 @@ body {
   background-color: #5599aa;
   display: flex;
   align-content: center;
+  z-index: -1;
 }
 .authority span {
   margin-right: 20px;
@@ -36,9 +37,11 @@ body {
 }
 
 .show-msg {
+  background-color: #ffaa00;
+  padding: 5px 10px;
   position: fixed;
   left: 20px;
-  top: 5px;
+  top: 35px;
   color: crimson;
 }
 

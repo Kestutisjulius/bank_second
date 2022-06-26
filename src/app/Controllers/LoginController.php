@@ -7,10 +7,19 @@ use Bank\Controllers\MessagesController;
 class LoginController
 {
     public function loginShow(){
-        return App::view('', ['messages' => MessagesController::get()]);
+
+    $data = MessagesController::get();
+    print_r($data);
+                    // Sending Alert message using PHP variable.
+            //        $alert = "This is DEMO WARNING";
+            //        echo "<script type='text/javascript'>alert('$alert');</script>";
+
+
+        return App::view('home', ['messages' => MessagesController::get()]);
     }
 
     public function login(){
+
         $users = json_decode(file_get_contents(App::PATH.'data/users.json'));
 
         foreach ($users as $user){
@@ -23,7 +32,7 @@ class LoginController
             } else {
                 AuthorityController::authAdd($user);
                 MessagesController::add('Hello '.$user->full_name, 'success');
-                return WorkController::allAccounts();
+                return (new HomeController())->work();
             }
         }
         MessagesController::add('blogai', 'alert');
